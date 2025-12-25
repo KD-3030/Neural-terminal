@@ -15,10 +15,10 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Neural Terminal | Software Engineer Portfolio",
+  title: "Neural Terminal | Portfolio",
   description: "A digital override into the system. Full Stack Engineer, AI Architect, IoT Specialist.",
   keywords: ["portfolio", "software engineer", "full stack", "AI", "IoT", "developer"],
-  authors: [{ name: "Your Name" }],
+  authors: [{ name: "Kinjal Dutta" }],
   openGraph: {
     title: "Neural Terminal",
     description: "Access classified projects and technical archives",

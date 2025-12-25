@@ -50,7 +50,7 @@ export default function HeroSection() {
         <p className="text-sm sm:text-lg md:text-xl text-[#999999] font-mono mb-4 sm:mb-8 max-w-xl mx-auto leading-relaxed">
           <span className="text-[#FF4500]">FULL_STACK</span> DEVELOPER<span className="hidden sm:inline">{" // "}</span><br className="sm:hidden" />
           <span className="text-[#FF4500]"> AI</span> ENGINEER<span className="hidden sm:inline">{" // "}</span><br className="sm:hidden" />
-          <span className="text-[#FF4500]"> BACKEND</span> SPECIALIST
+          <span className="text-[#FF4500]"> DEV_OPS</span> SPECIALIST
         </p>
 
         {/* Tagline */}

@@ -5,12 +5,13 @@ import GlitchText from '../ui/GlitchText'
 import { useStore } from '@/stores/useStore'
 
 const skills = [
-  { category: 'LANGUAGES', items: ['TypeScript', 'Python', 'Rust', 'Go', 'C++', 'Java'] },
-  { category: 'FRONTEND', items: ['React', 'Next.js', 'Three.js', 'WebGL', 'GLSL', 'Tailwind'] },
-  { category: 'BACKEND', items: ['Node.js', 'Express', 'FastAPI', 'GraphQL', 'gRPC', 'WebSocket'] },
-  { category: 'AI/ML', items: ['TensorFlow', 'PyTorch', 'OpenCV', 'Scikit-learn', 'CUDA', 'ONNX'] },
-  { category: 'CLOUD', items: ['AWS', 'GCP', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD'] },
-  { category: 'DATA', items: ['PostgreSQL', 'MongoDB', 'Redis', 'Kafka', 'ElasticSearch', 'GraphDB'] },
+  { category: 'LANGUAGES', items: ['JavaScript', 'Python', 'SQL', 'Bash (Shell)', 'C/C++',] },
+  { category: 'FRONTEND', items: ['Next.js', 'React', 'HTML/CSS3', 'Shadcn UI', 'Tailwind', 'DOM Manipulation'] },
+  { category: 'BACKEND', items: ['Node.js', 'websockets', 'REST APIs', 'Express', 'GraphQL', 'Fast API', 'MongoDB', 'PostgreSQL'] },
+  { category: 'AI/ML', items: ['Pytorch', 'CNNs & LSTMs', 'Computer Vision', 'Neural Networks', 'Pandas', 'Model Training'] },
+  { category: 'IOT/HARDWARE', items: ['Raspberry Pi', 'LiDAR Sensors', 'IoT Integration', 'Embedded Systems', 'GPU Computing','MQTT'] },
+  { category: 'TOOLS & OS', items: ['Linux', 'Git/GitHub', 'VS Code', 'Github Actions', 'Postman', 'Docker', 'Kubernetes','VPS'] },
+  { category: 'System Design', items: ['Scalability', 'Load Balancing', 'Microservices', 'Caching', 'Database Sharding', 'High Availability'] }
 ]
 
 export default function SkillsSection() {

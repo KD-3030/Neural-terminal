@@ -19,9 +19,15 @@ const contactLinks = [
   {
     label: 'LINKEDIN_LOGS',
     command: 'ACCESS',
-    href: 'www.linkedin.com/in/kinjal-dutta-16975928b',
+    href: 'https://www.linkedin.com/in/kinjal-dutta-16975928b',
     icon: '🔗',
   },
+  {
+    label: 'SOCIAL_LINKS',
+    command: 'ACCESS',
+    href: 'https://www.instagram.com/strucker30/',
+    icon: '🌐',
+  }
 ]
 
 export default function ContactSection() {

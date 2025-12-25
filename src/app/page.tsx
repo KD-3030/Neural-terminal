@@ -5,6 +5,8 @@ import BootSequence from '@/components/ui/BootSequence'
 import Navigation from '@/components/ui/Navigation'
 import CustomCursor from '@/components/ui/CustomCursor'
 import SystemMessages from '@/components/ui/SystemMessages'
+import FloatingTerminal from '@/components/ui/FloatingTerminal'
+import BackgroundAudio from '@/components/ui/BackgroundAudio'
 import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider'
 import HeroSection from '@/components/sections/HeroSection'
 import AboutSection from '@/components/sections/AboutSection'
@@ -27,6 +29,9 @@ export default function Home() {
       {/* Boot Sequence Loader */}
       <BootSequence />
 
+      {/* Background Audio */}
+      <BackgroundAudio />
+
       {/* Custom Cursor (desktop only) */}
       <CustomCursor enabled={true} />
 
@@ -35,6 +40,9 @@ export default function Home() {
 
       {/* System Messages Overlay */}
       <SystemMessages />
+
+      {/* Floating Terminal */}
+      <FloatingTerminal />
 
       {/* Main Content */}
       <SmoothScrollProvider>

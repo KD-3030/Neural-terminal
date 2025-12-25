@@ -17,35 +17,35 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: 'project-a',
-    title: 'VISION_ENGINE',
-    mode: 'visual_analysis',
-    modeLabel: 'VISUAL_ANALYSIS_MODE',
-    description: 'Real-time computer vision system for object detection and tracking. Processes live video feeds with custom neural networks for industrial automation.',
-    tech: ['Python', 'OpenCV', 'TensorFlow', 'CUDA'],
+    id: 'project-leaftrack',
+    title: 'LEAF_TRACK',
+    mode: 'inventory_system',
+    modeLabel: 'DISTRIBUTION_LOGISTICS',
+    description: 'A comprehensive inventory management application tailored for the tea industry. Streamlines leaf distribution, stock tracking, and supplier logistics.',
+    tech: ['JavaScript', 'Next.js 14', 'NoSQL', 'Web Dev'],
     status: 'DEPLOYED',
-    link: '#',
+    link: 'https://sohagtea.vercel.app',
   },
   {
-    id: 'project-b',
-    title: 'IOT_NEXUS',
-    mode: 'hardware_link',
-    modeLabel: 'HARDWARE_LINK_MODE',
-    description: 'Distributed IoT platform connecting 1000+ sensors. Real-time data aggregation with edge computing for smart infrastructure management.',
-    tech: ['Arduino', 'Raspberry Pi', 'MQTT', 'Node.js'],
-    status: 'ACTIVE',
-    link: '#',
+    id: 'project-shiftmate',
+    title: 'SHIFTMATE',
+    mode: 'Computer_vision_ai',
+    modeLabel: 'SMART_MOVING_SOLUTIONS',
+    description: 'ShiftMate is a comprehensive moving and storage management platform that leverages AI/ML for automatic furniture detection and volume estimation from images.',
+    tech: ['Full-Stack', 'React', 'OpenCV','YoloV8'],
+    status: 'IN_DEVELOPMENT',
+    link: 'https://github.com/KD-3030/ShiftMate',
   },
   {
-    id: 'project-c',
-    title: 'CLOUD_ARCHITECT',
-    mode: 'system_architect',
-    modeLabel: 'SYSTEM_ARCHITECT_MODE',
-    description: 'Enterprise-grade SaaS platform with microservices architecture. Handles 10M+ daily transactions with 99.99% uptime.',
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'AWS'],
-    status: 'PRODUCTION',
-    link: '#',
-  },
+    id: 'project-agritrack',
+    title: 'AGRI_TRACK',
+    mode: 'iot_analytics',
+    modeLabel: 'AGRO_INTELLIGENCE',
+    description: 'IoT and AI-powered platform for real-time monitoring of agricultural machinery. Utilizes sensor data to analyze equipment health and optimize farming operations.',
+    tech: ['Python', 'IoT', 'Raspberry Pi', 'AI/ML'],
+    status: 'PROTOTYPE',
+    link: 'https://github.com/KD-3030/AgriTrack', 
+  }
 ]
 
 export default function ProjectsSection() {
@@ -109,6 +109,12 @@ interface ProjectCardProps {
 function ProjectCard({ project, index, isActive, onHover, onLeave }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
 
+  const handleClick = () => {
+    if (project.link) {
+      window.open(project.link, '_blank', 'noopener,noreferrer')
+    }
+  }
+
   return (
     <div
       ref={cardRef}
@@ -121,7 +127,7 @@ function ProjectCard({ project, index, isActive, onHover, onLeave }: ProjectCard
       `}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
-      onClick={onHover}
+      onClick={handleClick}
     >
       {/* Mode indicator bar */}
       <div className={`
@@ -185,18 +191,23 @@ function ProjectCard({ project, index, isActive, onHover, onLeave }: ProjectCard
         </div>
 
         {/* Action */}
-        <div className={`
-          flex items-center gap-2 text-[10px] sm:text-xs font-mono transition-all
-          ${isActive ? 'text-[#FF4500]' : 'text-[#333333]'}
-        `}>
-          <span>&gt; ACCESS_PROJECT</span>
-          <span className={`
-            transform transition-transform
-            ${isActive ? 'translate-x-2' : 'translate-x-0'}
+        {project.link && (
+          <div className={`
+            flex items-center gap-2 text-[10px] sm:text-xs font-mono transition-all
+            ${isActive ? 'text-[#FF4500]' : 'text-[#333333]'}
           `}>
-            →
-          </span>
-        </div>
+            <span>&gt; ACCESS_PROJECT</span>
+            <span className={`
+              transform transition-transform
+              ${isActive ? 'translate-x-2' : 'translate-x-0'}
+            `}>
+              →
+            </span>
+            <span className="text-[#666] ml-2 hidden sm:inline">
+              [{project.link.includes('github') ? 'GITHUB' : 'LIVE'}]
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Corner decorations */}

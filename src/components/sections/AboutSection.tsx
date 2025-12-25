@@ -9,7 +9,7 @@ export default function AboutSection() {
   const highlights = [
     { word: 'Full Stack', description: 'End-to-end system architecture' },
     { word: 'AI', description: 'Machine learning & computer vision' },
-    { word: 'IoT', description: 'Hardware integration & embedded systems' },
+    { word: 'DevOps', description: 'Infrastructure automation & CI/CD' },
   ]
 
   return (
@@ -90,7 +90,7 @@ export default function AboutSection() {
               
               <div className="text-[#E0E0E0] leading-relaxed space-y-3 sm:space-y-4">
                 <p>
-                  I&apos;m a <span className="text-[#FF4500]">software engineer</span> who 
+                  I&apos;m an aspiring <span className="text-[#FF4500]">software engineer</span> who 
                   believes technology should feel like magic. I specialize in building 
                   <span className="text-[#FF4500]"> intelligent systems</span> that bridge 
                   the gap between digital innovation and real-world impact.

@@ -27,10 +27,10 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4 md:px-6 md:py-6 flex justify-between items-center mix-blend-difference">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3 md:px-6 md:py-4 flex justify-between items-center bg-[#050505]/95 backdrop-blur-md border-b border-[#1a1a1a]/50">
         {/* Logo */}
         <Link href="/" className="group">
-          <span className="text-white font-mono text-xs sm:text-sm tracking-widest">
+          <span className="text-[#E0E0E0] font-mono text-xs sm:text-sm tracking-widest hover:text-white transition-colors">
             <span className="text-[#FF4500]">&gt;</span> <span className="hidden xs:inline">NEURAL_</span>TERMINAL
           </span>
         </Link>
@@ -45,7 +45,7 @@ export default function Navigation() {
                 text-xs font-mono tracking-wider transition-all duration-300
                 ${Math.abs(scrollProgress - item.progress) < 0.1 
                   ? 'text-[#FF4500]' 
-                  : 'text-white/50 hover:text-white'}
+                  : 'text-[#888] hover:text-[#E0E0E0]'}
               `}
             >
               {item.label}
@@ -58,10 +58,49 @@ export default function Navigation() {
           {/* Audio Toggle */}
           <button
             onClick={toggleAudio}
-            className="text-white/50 hover:text-white text-[10px] sm:text-xs font-mono transition-colors"
+            className={`
+              flex items-center gap-1.5 px-2 py-1 rounded border transition-all duration-300
+              ${audioEnabled 
+                ? 'border-[#FF4500]/50 text-[#FF4500] bg-[#FF4500]/10' 
+                : 'border-[#333] text-[#666] hover:text-[#888] hover:border-[#444]'}
+            `}
             aria-label={audioEnabled ? 'Disable audio' : 'Enable audio'}
+            title="Toggle background music"
           >
-            [{audioEnabled ? 'ON' : 'OFF'}]
+            {/* Speaker Icon */}
+            <svg 
+              className="w-3 h-3 sm:w-4 sm:h-4" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              {audioEnabled ? (
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" 
+                />
+              ) : (
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" 
+                />
+              )}
+            </svg>
+            <span className="text-[10px] sm:text-xs font-mono hidden sm:inline">
+              {audioEnabled ? 'ON' : 'OFF'}
+            </span>
+            {/* Animated bars when playing */}
+            {audioEnabled && (
+              <div className="flex items-end gap-0.5 h-3">
+                <span className="w-0.5 bg-[#FF4500] animate-pulse" style={{ height: '40%', animationDelay: '0ms' }} />
+                <span className="w-0.5 bg-[#FF4500] animate-pulse" style={{ height: '80%', animationDelay: '150ms' }} />
+                <span className="w-0.5 bg-[#FF4500] animate-pulse" style={{ height: '60%', animationDelay: '300ms' }} />
+              </div>
+            )}
           </button>
 
           {/* Progress Indicator */}
@@ -83,9 +122,9 @@ export default function Navigation() {
             className="md:hidden flex flex-col gap-1 p-2"
             aria-label="Toggle menu"
           >
-            <span className={`w-5 h-0.5 bg-white transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
-            <span className={`w-5 h-0.5 bg-white transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-            <span className={`w-5 h-0.5 bg-white transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
+            <span className={`w-5 h-0.5 bg-[#E0E0E0] transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-1.5 bg-[#FF4500]' : ''}`} />
+            <span className={`w-5 h-0.5 bg-[#E0E0E0] transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+            <span className={`w-5 h-0.5 bg-[#E0E0E0] transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5 bg-[#FF4500]' : ''}`} />
           </button>
         </div>
       </nav>

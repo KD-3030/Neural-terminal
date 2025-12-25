@@ -11,14 +11,10 @@ import { BlendFunction } from 'postprocessing'
 import { PerspectiveCamera, AdaptiveDpr, AdaptiveEvents } from '@react-three/drei'
 import * as THREE from 'three'
 import NeuralCore from './NeuralCore'
-import SkillsSphere from './SkillsSphere'
-import PointCloud from './PointCloud'
-import WireframeMesh from './WireframeMesh'
-import GlassPanels from './GlassPanels'
 import { useStore } from '@/stores/useStore'
 
 // Throttle function for performance
-function throttle<T extends (...args: unknown[]) => void>(func: T, limit: number): T {
+function throttle<T extends (...args: never[]) => void>(func: T, limit: number): T {
   let inThrottle: boolean
   return ((...args: Parameters<T>) => {
     if (!inThrottle) {
@@ -31,17 +27,10 @@ function throttle<T extends (...args: unknown[]) => void>(func: T, limit: number
 
 const SceneContent = memo(function SceneContent() {
   const { scrollProgress, setCursorPosition } = useStore()
-  
-  // Determine which mode to show based on scroll - only render visible components
-  const showNeuralCore = scrollProgress < 0.25
-  const showPointCloud = scrollProgress > 0.25 && scrollProgress < 0.4
-  const showWireframe = scrollProgress > 0.4 && scrollProgress < 0.55
-  const showGlassPanels = scrollProgress > 0.55 && scrollProgress < 0.7
-  const showSkillsSphere = scrollProgress > 0.7 && scrollProgress < 0.9
 
-  // Camera position based on scroll
-  const cameraZ = 8 - scrollProgress * 2
-  const cameraY = scrollProgress * 0.5
+  // Camera position based on scroll - pull back as we scroll
+  const cameraZ = 6 - scrollProgress * 1
+  const cameraY = scrollProgress * 0.3
 
   // Throttled mouse handler for better performance
   useEffect(() => {
@@ -65,27 +54,26 @@ const SceneContent = memo(function SceneContent() {
       />
       
       {/* Simplified lighting for performance */}
-      <ambientLight intensity={0.12} />
+      <ambientLight intensity={0.15} />
       <pointLight
         position={[5, 5, 5]}
-        intensity={0.25}
+        intensity={0.4}
         color="#FF4500"
         distance={20}
         decay={2}
       />
+      <pointLight
+        position={[-5, -5, -5]}
+        intensity={0.2}
+        color="#FF6B35"
+        distance={15}
+        decay={2}
+      />
       
-      {/* Main Neural Core - only render when visible */}
-      {showNeuralCore && (
-        <group position={[0, 0, -3]} scale={0.6}>
-          <NeuralCore />
-        </group>
-      )}
-      
-      {/* Conditionally render 3D components based on scroll */}
-      {showPointCloud && <PointCloud active={true} />}
-      {showWireframe && <WireframeMesh active={true} />}
-      {showGlassPanels && <GlassPanels active={true} />}
-      {showSkillsSphere && <SkillsSphere />}
+      {/* Main Neural Core - always visible, handles its own animation states */}
+      <group position={[0, 0, -2]}>
+        <NeuralCore />
+      </group>
       
       {/* Background grid */}
       <gridHelper
@@ -97,8 +85,8 @@ const SceneContent = memo(function SceneContent() {
       {/* Minimal post-processing for performance */}
       <EffectComposer multisampling={0}>
         <Bloom
-          intensity={0.2}
-          luminanceThreshold={0.4}
+          intensity={0.3}
+          luminanceThreshold={0.3}
           luminanceSmoothing={0.9}
           blendFunction={BlendFunction.ADD}
           mipmapBlur

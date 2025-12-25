@@ -15,7 +15,8 @@ const bootMessages = [
   { text: '> ACCESS_LEVEL: CLASSIFIED', delay: 100 },
   { text: '> NEURAL_LINK_ESTABLISHED', delay: 200 },
   { text: '', delay: 100 },
-  { text: '> WELCOME TO THE SYSTEM', delay: 300 },
+  { text: '> HELLO USER', delay: 300 },
+  { text: '> WELCOME TO NEURAL TERMINAL', delay: 500 },
 ]
 
 // Neural network canvas animation
@@ -293,9 +294,15 @@ export default function BootSequence() {
           
           {/* Progress percentage in center */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-2xl md:text-4xl font-bold text-[#FF4500] tabular-nums">
-              {Math.round(loadingProgress)}%
-            </span>
+            {Math.round(loadingProgress) === 100 ? (
+              <span className="text-xl md:text-3xl font-bold text-[#FF4500] tracking-widest animate-pulse">
+                WELCOME
+              </span>
+            ) : (
+              <span className="text-2xl md:text-4xl font-bold text-[#FF4500] tabular-nums">
+                {Math.round(loadingProgress)}%
+              </span>
+            )}
           </div>
         </div>
       </div>
